@@ -1,5 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
-package gen;
+package parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -97,6 +97,20 @@ public interface julVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInstReturn(julParser.InstReturnContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code instIncr}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInstIncr(julParser.InstIncrContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code instDecr}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInstDecr(julParser.InstDecrContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code instDecl}
 	 * labeled alternative in {@link julParser#inst}.

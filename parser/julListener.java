@@ -1,5 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
-package gen;
+package parser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -155,6 +155,30 @@ public interface julListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInstReturn(julParser.InstReturnContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code instIncr}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void enterInstIncr(julParser.InstIncrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code instIncr}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void exitInstIncr(julParser.InstIncrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code instDecr}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void enterInstDecr(julParser.InstDecrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code instDecr}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void exitInstDecr(julParser.InstDecrContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code instDecl}
 	 * labeled alternative in {@link julParser#inst}.

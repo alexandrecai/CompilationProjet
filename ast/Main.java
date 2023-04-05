@@ -1,7 +1,7 @@
 package ast;
 
-import gen.julLexer;
-import gen.julParser;
+import parser.julLexer;
+import parser.julParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;

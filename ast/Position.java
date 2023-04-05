@@ -1,6 +1,6 @@
 package ast;
 
-import gen.julParser;
+import parser.julParser;
 
 public class Position {
     private int numligne ;

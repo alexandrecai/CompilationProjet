@@ -97,4 +97,11 @@ public abstract class Visitor<T> {
         return null;
     };
 
+    public T visit(InstrIncr instrIncr) throws Exception {
+        return null;
+    }
+
+    public T visit(InstrDecr instrDecr) throws Exception {
+        return null;
+    }
 }

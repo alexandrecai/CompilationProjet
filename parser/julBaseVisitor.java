@@ -1,5 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
-package gen;
+package parser;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -103,6 +103,20 @@ public class julBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ju
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitInstReturn(julParser.InstReturnContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitInstIncr(julParser.InstIncrContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitInstDecr(julParser.InstDecrContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

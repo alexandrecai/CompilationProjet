@@ -5,6 +5,7 @@ WS:[ \t\n\r] -> skip;
 INT:[0-9]+;
 
 Op:'*'|'+'|'-'|'&&'|'||'|'=='|'<' | 'not'|'abs'|'/';
+
 Const:'true'|'false';
 type: 'bool' | 'int' ;
 
@@ -28,12 +29,15 @@ param : type ID;
 pv: ';';
 inst:
     'return' exp pv				#instReturn
+    |ID'++'pv          #instIncr
+    |ID'--'pv          #instDecr
     |type ID ('=' exp)? pv			#instDecl
     |ID '=' exp pv				#instAff
     |'print' '(' exp ')' pv			#instPrint
     |'if' '('exp')' inst 'else' inst		#instIf
     |'while' '(' exp ')' inst			#instWhile
    |'{' inst* '}'				#instList
+
 ;
 program: (inst|function)+;
 

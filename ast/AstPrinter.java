@@ -156,4 +156,13 @@ public class AstPrinter extends Visitor<String> {
         return type.getType();
     }
 
+    @Override
+    public String visit(InstrIncr instrIncr) {
+        return instrIncr.getID()+instrIncr.getOp()+instrIncr.getPv();
+    }
+
+    @Override
+    public String visit(InstrDecr instrDecr) {
+        return instrDecr.getID()+instrDecr.getOp()+instrDecr.getPv();
+    }
 }

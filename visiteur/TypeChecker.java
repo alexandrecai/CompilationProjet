@@ -281,9 +281,34 @@ public class TypeChecker extends Visitor<Type> {
 
 	}
 
+	@Override
+	public Type visit(InstrIncr instrIncr) throws Exception {
 
+		Type instrIncrID = table.variableLookup(instrIncr.getID(), this.visitedBlocks);
+		if(instrIncrID==null){
+			throw new Exception("La variable que vous voulez incrementer n'existe pas");
+		}
+		else if(instrIncrID.getType().toLowerCase().equals(intType.getType().toLowerCase())){
+			return intType;
+		}
+		else {
+			throw new Exception("Vous essayez d'incrementer une variable qui n'est pas un int");
+		}
+	}
 
-
+	@Override
+	public Type visit(InstrDecr instrDecr) throws Exception {
+		Type instrDecrID = table.variableLookup(instrDecr.getID(), this.visitedBlocks);
+		if(instrDecrID==null){
+			throw new Exception("La variable que vous voulez decrementer n'existe pas");
+		}
+		else if(instrDecrID.getType().toLowerCase().equals(intType.getType().toLowerCase())){
+			return intType;
+		}
+		else {
+			throw new Exception("Vous essayez de decrementer une variable qui n'est pas un int");
+		}
+	}
 }
 	
 

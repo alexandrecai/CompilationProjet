@@ -1,7 +1,6 @@
 package ast;
-import gen.julBaseVisitor;
-import ast.*;
-import gen.julParser;
+import parser.julBaseVisitor;
+import parser.julParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -237,4 +236,19 @@ public class AstBuild extends julBaseVisitor<Node>{
         return exp;
     }
 
+    @Override
+    public Node visitInstIncr(julParser.InstIncrContext ctx) {
+        String id = ctx.ID().getText();
+        InstrIncr ii = new InstrIncr(id,"++",";");
+        ii.setPos(getPos(ctx));
+        return ii;
+    }
+
+    @Override
+    public Node visitInstDecr(julParser.InstDecrContext ctx) {
+        String id = ctx.ID().getText();
+        InstrDecr instrDecr = new InstrDecr(id,"--",";");
+        instrDecr.setPos(getPos(ctx));
+        return instrDecr;
+    }
 }
