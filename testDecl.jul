@@ -1,0 +1,1 @@
+bool a=true;int b=7;print(b);

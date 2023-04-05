@@ -1,0 +1,1 @@
+int testWhile(){bool z=true;int ab=5;while(ab){bool h=true;}return 5;}int z=12;
