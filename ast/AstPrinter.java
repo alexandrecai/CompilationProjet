@@ -71,12 +71,6 @@ public class AstPrinter extends Visitor<String> {
         return res.toString();
     }
 
-
-    @Override
-    public String visit(InstrAff instrAff) throws Exception {
-        return instrAff.getID() + instrAff.getEgal() + instrAff.getExp().accept(this)+ instrAff.getPv();
-    }
-
     @Override
     public String visit(InstrDecl instrDecl) throws Exception {
         return instrDecl.getType().accept(this) + " " +  instrDecl.getID() + instrDecl.getEgal() + instrDecl.getExp().accept(this) + instrDecl.getPv() ;
@@ -155,7 +149,7 @@ public class AstPrinter extends Visitor<String> {
     public String visit(Type type) {
         return type.getType();
     }
-
+    /*
     @Override
     public String visit(InstrIncr instrIncr) {
         return instrIncr.getID()+instrIncr.getOp()+instrIncr.getPv();
@@ -164,5 +158,35 @@ public class AstPrinter extends Visitor<String> {
     @Override
     public String visit(InstrDecr instrDecr) {
         return instrDecr.getID()+instrDecr.getOp()+instrDecr.getPv();
+    }
+    */
+    @Override
+    public String visit(CalcuAff calcuAff) throws Exception {
+        return calcuAff.getID() + calcuAff.getEgal() + calcuAff.getExp().accept(this);
+    }
+
+    @Override
+    public String visit(CalcuIncr calcuIncr) {
+        return calcuIncr.getID()+calcuIncr.getOp();
+    }
+
+    @Override
+    public String visit(CalcuDecr calcuDecr) {
+        return calcuDecr.getID()+calcuDecr.getOp();
+    }
+
+    @Override
+    public String visit(InstrCalcu instrCalcu) throws Exception {
+        return instrCalcu.getCalcu().accept(this) + instrCalcu.getPv();
+    }
+
+    @Override
+    public String visit(InstrFor instrFor) throws Exception {
+        String res = "for" + "( " + instrFor.getType().getType() + " " + instrFor.getID() + " = " + instrFor.getLstExpr().get(0).accept(this) + " ; "+ instrFor.getLstExpr().get(1).accept(this) + " ; " + instrFor.getCalcu().accept(this) + " ) " + "{\n";
+        tabActuel++;
+        res += instrFor.getBlock().getInstr().accept(this);
+        tabActuel--;
+        res += Indent() + "}";
+        return res;
     }
 }

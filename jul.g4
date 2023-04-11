@@ -26,18 +26,26 @@ exp:
 function : type ID '(' (param (',' param)*)? ')' inst ;
 param : type ID;
 
+calcu:
+    ID'++'          #calcuIncr
+    |ID'--'          #calcuDecr
+    |ID '=' exp				#calcuAff
+;
+
 pv: ';';
 inst:
     'return' exp pv				#instReturn
-    |ID'++'pv          #instIncr
-    |ID'--'pv          #instDecr
+    |calcu pv                    #instCalcu
     |type ID ('=' exp)? pv			#instDecl
-    |ID '=' exp pv				#instAff
     |'print' '(' exp ')' pv			#instPrint
     |'if' '('exp')' inst 'else' inst		#instIf
     |'while' '(' exp ')' inst			#instWhile
+    |'for' '('type ID '=' exp ';' exp ';' calcu ')' inst #instFor
    |'{' inst* '}'				#instList
 
 ;
+
+
+
 program: (inst|function)+;
 

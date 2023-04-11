@@ -134,6 +134,42 @@ public interface julListener extends ParseTreeListener {
 	 */
 	void exitParam(julParser.ParamContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code calcuIncr}
+	 * labeled alternative in {@link julParser#calcu}.
+	 * @param ctx the parse tree
+	 */
+	void enterCalcuIncr(julParser.CalcuIncrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code calcuIncr}
+	 * labeled alternative in {@link julParser#calcu}.
+	 * @param ctx the parse tree
+	 */
+	void exitCalcuIncr(julParser.CalcuIncrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code calcuDecr}
+	 * labeled alternative in {@link julParser#calcu}.
+	 * @param ctx the parse tree
+	 */
+	void enterCalcuDecr(julParser.CalcuDecrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code calcuDecr}
+	 * labeled alternative in {@link julParser#calcu}.
+	 * @param ctx the parse tree
+	 */
+	void exitCalcuDecr(julParser.CalcuDecrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code calcuAff}
+	 * labeled alternative in {@link julParser#calcu}.
+	 * @param ctx the parse tree
+	 */
+	void enterCalcuAff(julParser.CalcuAffContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code calcuAff}
+	 * labeled alternative in {@link julParser#calcu}.
+	 * @param ctx the parse tree
+	 */
+	void exitCalcuAff(julParser.CalcuAffContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link julParser#pv}.
 	 * @param ctx the parse tree
 	 */
@@ -156,29 +192,17 @@ public interface julListener extends ParseTreeListener {
 	 */
 	void exitInstReturn(julParser.InstReturnContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code instIncr}
+	 * Enter a parse tree produced by the {@code instCalcu}
 	 * labeled alternative in {@link julParser#inst}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstIncr(julParser.InstIncrContext ctx);
+	void enterInstCalcu(julParser.InstCalcuContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code instIncr}
+	 * Exit a parse tree produced by the {@code instCalcu}
 	 * labeled alternative in {@link julParser#inst}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstIncr(julParser.InstIncrContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code instDecr}
-	 * labeled alternative in {@link julParser#inst}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstDecr(julParser.InstDecrContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code instDecr}
-	 * labeled alternative in {@link julParser#inst}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstDecr(julParser.InstDecrContext ctx);
+	void exitInstCalcu(julParser.InstCalcuContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code instDecl}
 	 * labeled alternative in {@link julParser#inst}.
@@ -191,18 +215,6 @@ public interface julListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInstDecl(julParser.InstDeclContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code instAff}
-	 * labeled alternative in {@link julParser#inst}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstAff(julParser.InstAffContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code instAff}
-	 * labeled alternative in {@link julParser#inst}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstAff(julParser.InstAffContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code instPrint}
 	 * labeled alternative in {@link julParser#inst}.
@@ -239,6 +251,18 @@ public interface julListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInstWhile(julParser.InstWhileContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code instFor}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void enterInstFor(julParser.InstForContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code instFor}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void exitInstFor(julParser.InstForContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code instList}
 	 * labeled alternative in {@link julParser#inst}.

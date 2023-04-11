@@ -75,7 +75,7 @@ public class TypeChecker extends Visitor<Type> {
 		return boolType;
 	}
 
-	public Type visit (InstrAff ia) throws Exception {
+	public Type visit (CalcuAff ca) throws Exception {
 
 		//affectation : récupérer le type de l’identifiant, le
 		//type de l’expression, et s’assurer que les deux sont
@@ -85,11 +85,11 @@ public class TypeChecker extends Visitor<Type> {
 		//
 		//retourner un type Instruction s’il n’y a pas
 		//d’erreur
-		Type instrAffExp = ia.getExp().accept(this);
+		Type CalcuAffExp = ca.getExp().accept(this);
 
-		Type instrAffID = table.variableLookup(ia.getID(), this.visitedBlocks);
+		Type CalcuAffID = table.variableLookup(ca.getID(), this.visitedBlocks);
 
-		if (instrAffID.getType().toLowerCase().equals(instrAffExp.getType().toLowerCase())) {
+		if (CalcuAffID.getType().toLowerCase().equals(CalcuAffExp.getType().toLowerCase())) {
 			return statType;
 		} else {
 			throw new Exception("La valeur à affectee n'est pas du meme type que la variable à qui on l'affecte");
@@ -282,13 +282,13 @@ public class TypeChecker extends Visitor<Type> {
 	}
 
 	@Override
-	public Type visit(InstrIncr instrIncr) throws Exception {
+	public Type visit(CalcuIncr calcuIncr) throws Exception {
 
-		Type instrIncrID = table.variableLookup(instrIncr.getID(), this.visitedBlocks);
-		if(instrIncrID==null){
+		Type calcuIncrID = table.variableLookup(calcuIncr.getID(), this.visitedBlocks);
+		if(calcuIncrID==null){
 			throw new Exception("La variable que vous voulez incrementer n'existe pas");
 		}
-		else if(instrIncrID.getType().toLowerCase().equals(intType.getType().toLowerCase())){
+		else if(calcuIncrID.getType().toLowerCase().equals(intType.getType().toLowerCase())){
 			return intType;
 		}
 		else {
@@ -297,18 +297,59 @@ public class TypeChecker extends Visitor<Type> {
 	}
 
 	@Override
-	public Type visit(InstrDecr instrDecr) throws Exception {
-		Type instrDecrID = table.variableLookup(instrDecr.getID(), this.visitedBlocks);
-		if(instrDecrID==null){
+	public Type visit(CalcuDecr calcuDecr) throws Exception {
+		Type calcuDecrID = table.variableLookup(calcuDecr.getID(), this.visitedBlocks);
+		if(calcuDecrID==null){
 			throw new Exception("La variable que vous voulez decrementer n'existe pas");
 		}
-		else if(instrDecrID.getType().toLowerCase().equals(intType.getType().toLowerCase())){
+		else if(calcuDecrID.getType().toLowerCase().equals(intType.getType().toLowerCase())){
 			return intType;
 		}
 		else {
 			throw new Exception("Vous essayez de decrementer une variable qui n'est pas un int");
 		}
 	}
+
+	@Override
+	public Type visit(InstrFor instrFor) throws Exception {
+		Type instrForIDType = table.variableLookup(instrFor.getID(), this.visitedBlocks);
+		Type instrForExpType = instrFor.getLstExpr().get(0).accept(this);
+		if(!instrForExpType.getType().toLowerCase().equals(instrForIDType.getType().toLowerCase())){
+			throw new Exception("Vous essayez de déclarer une variable avec une valeur d'un type différent");
+		}
+		Type typeBoucle = instrFor.getLstExpr().get(1).accept(this);
+		if(!typeBoucle.getType().toLowerCase().equals(boolType.getType().toLowerCase())){
+			throw new Exception("L'expression dans votre boucle for n'est pas correcte");
+		}
+		instrFor.getBlock().getInstr().accept(this);
+		instrFor.getCalcu().accept(this);
+
+		return statType;
+	}
+
+	/*
+	public Type visit (InstrCalcu ic) throws Exception {
+
+		//affectation : récupérer le type de l’identifiant, le
+		//type de l’expression, et s’assurer que les deux sont
+		//identiques. Sinon, lever une erreur précise
+		//(impossible d’affecter l’exp de type… à la var. de
+		//type … ).
+		//
+		//retourner un type Instruction s’il n’y a pas
+		//d’erreur
+		Type instrCalcuCalc = ic.getCalcu().accept(this);
+
+		Type instrAffID = table.variableLookup(ia.getID(), this.visitedBlocks);
+
+		if (instrAffID.getType().toLowerCase().equals(instrAffExp.getType().toLowerCase())) {
+			return statType;
+		} else {
+			throw new Exception("La valeur à affectee n'est pas du meme type que la variable à qui on l'affecte");
+		}
+	}
+
+	 */
 }
 	
 

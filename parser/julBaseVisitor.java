@@ -95,6 +95,27 @@ public class julBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ju
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitCalcuIncr(julParser.CalcuIncrContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitCalcuDecr(julParser.CalcuDecrContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitCalcuAff(julParser.CalcuAffContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitPv(julParser.PvContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -109,14 +130,7 @@ public class julBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ju
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInstIncr(julParser.InstIncrContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstDecr(julParser.InstDecrContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInstCalcu(julParser.InstCalcuContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -124,13 +138,6 @@ public class julBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ju
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitInstDecl(julParser.InstDeclContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstAff(julParser.InstAffContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -152,6 +159,13 @@ public class julBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ju
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitInstWhile(julParser.InstWhileContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitInstFor(julParser.InstForContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

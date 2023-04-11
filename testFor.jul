@@ -1,0 +1,1 @@
+int testFor(){bool z=true;int i = 2;for(bool m = true; i<3; i--){bool h=true;}return 5;}int z=12;

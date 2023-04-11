@@ -40,4 +40,8 @@ public class Position {
     static Position getPos(julParser.InstContext ctx) {
         return new Position(ctx.start.getLine(), ctx.start.getCharPositionInLine());
     }
+
+    static Position getPos(julParser.CalcuContext ctx) {
+        return new Position(ctx.start.getLine(), ctx.start.getCharPositionInLine());
+    }
 }

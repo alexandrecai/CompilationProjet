@@ -2,7 +2,7 @@ package ast;
 
 import visiteur.Visitor;
 
-public class InstrAff extends Instr{
+public class CalcuAff extends Calcu{
 
     private String ID;
 
@@ -10,13 +10,10 @@ public class InstrAff extends Instr{
 
     private Exp exp;
 
-    private String pv;
-
-    public InstrAff(String ID, String egal, Exp exp, String pv) {
+    public CalcuAff(String ID, String egal, Exp exp) {
         this.ID = ID;
         this.egal = egal;
         this.exp = exp;
-        this.pv = pv;
     }
 
     public String getID() {
@@ -43,14 +40,7 @@ public class InstrAff extends Instr{
         this.exp = exp;
     }
 
-    public String getPv() {
-        return pv;
-    }
-
-    public void setPv(String pv) {
-        this.pv = pv;
-    }
-
+    @Override
     public <T> T accept(Visitor<T> visitor) throws Exception {
         return visitor.visit(this);
     }

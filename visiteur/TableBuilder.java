@@ -128,4 +128,20 @@ public class TableBuilder extends Visitor<Void> {
 		return super.visit(program);
 	}
 
+	@Override
+	public Void visit(InstrFor instrFor) throws Exception {
+
+		Type typeDecl = this.symbolTable.variableLookup(instrFor.getID(),this.visitedBlocks);
+		if(typeDecl!=null){
+			throw new Exception("Variable deja declaree : " + instrFor.getID());
+		}
+		if(visitedBlocks.isEmpty()){
+			throw new Exception("visitedBlocks est vide");
+		}
+
+
+		this.symbolTable.addLocalVariable(this.visitedBlocks.peek(),instrFor.getID(),instrFor.getType());
+
+		return null;
+	}
 }

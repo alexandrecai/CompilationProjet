@@ -109,15 +109,6 @@ public class AstBuild extends julBaseVisitor<Node>{
     }
 
     @Override
-    public Node visitInstAff(julParser.InstAffContext ctx) {
-        Exp n = (Exp) ctx.exp().accept(this);
-        String id = ctx.ID().getText();
-        InstrAff instrAff = new InstrAff(id, "=", n, ";");
-        instrAff.setPos(getPos(ctx));
-        return instrAff;
-    }
-
-    @Override
     public Node visitInstPrint(julParser.InstPrintContext ctx) {
         Exp n = (Exp) ctx.exp().accept(this);
         InstrPrint instrPrint = new InstrPrint("return", "(", ")", n, ";");
@@ -237,18 +228,49 @@ public class AstBuild extends julBaseVisitor<Node>{
     }
 
     @Override
-    public Node visitInstIncr(julParser.InstIncrContext ctx) {
+    public Node visitCalcuIncr(julParser.CalcuIncrContext ctx) {
         String id = ctx.ID().getText();
-        InstrIncr ii = new InstrIncr(id,"++",";");
-        ii.setPos(getPos(ctx));
-        return ii;
+        CalcuIncr ci = new CalcuIncr(id,"++");
+        ci.setPos(getPos(ctx));
+        return ci;
     }
 
     @Override
-    public Node visitInstDecr(julParser.InstDecrContext ctx) {
+    public Node visitCalcuDecr(julParser.CalcuDecrContext ctx) {
         String id = ctx.ID().getText();
-        InstrDecr instrDecr = new InstrDecr(id,"--",";");
-        instrDecr.setPos(getPos(ctx));
-        return instrDecr;
+        CalcuDecr cd = new CalcuDecr(id,"--");
+        cd.setPos(getPos(ctx));
+        return cd;
+    }
+
+    @Override
+    public Node visitCalcuAff(julParser.CalcuAffContext ctx) {
+        Exp n = (Exp) ctx.exp().accept(this);
+        String id = ctx.ID().getText();
+        CalcuAff calcuAff = new CalcuAff(id, "=", n);
+        calcuAff.setPos(getPos(ctx));
+        return calcuAff;
+    }
+
+    @Override
+    public Node visitInstCalcu(julParser.InstCalcuContext ctx) {
+        Calcu c = (Calcu) ctx.calcu().accept(this);
+        InstrCalcu instrCalcu = new InstrCalcu(c,";");
+        instrCalcu.setPos(getPos(ctx));
+        return instrCalcu;
+    }
+
+    @Override
+    public Node visitInstFor(julParser.InstForContext ctx) {
+        Type type = (Type) ctx.type().accept(this);
+        String id = ctx.ID().getText();
+        List<Exp> lstExpre = new ArrayList<>();
+        for(int i=0; i<ctx.exp().size(); i++)
+            lstExpre.add((Exp)ctx.exp(i).accept(this));
+        Calcu calcu = (Calcu) ctx.calcu().accept(this);
+        Block block = new Block((Instr) ctx.inst().accept(this));
+        InstrFor instrFor = new InstrFor(type,id,lstExpre,calcu,block);
+        instrFor.setPos(getPos(ctx));
+        return instrFor;
     }
 }

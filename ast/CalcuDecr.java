@@ -2,23 +2,16 @@ package ast;
 
 import visiteur.Visitor;
 
-public class InstrDecr extends Instr{
+public class CalcuDecr extends Calcu{
 
     private String ID;
 
     private String op;
 
-    private String pv = ";";
 
-    public InstrDecr(String ID, String op, String pv) {
+    public CalcuDecr(String ID, String op) {
         this.ID = ID;
         this.op = op;
-        this.pv = pv;
-    }
-
-    @Override
-    public <T> T accept(Visitor<T> visitor) throws Exception {
-        return visitor.visit(this);
     }
 
     public String getID() {
@@ -37,11 +30,9 @@ public class InstrDecr extends Instr{
         this.op = op;
     }
 
-    public String getPv() {
-        return pv;
-    }
 
-    public void setPv(String pv) {
-        this.pv = pv;
+    @Override
+    public <T> T accept(Visitor<T> visitor) throws Exception {
+        return visitor.visit(this);
     }
 }

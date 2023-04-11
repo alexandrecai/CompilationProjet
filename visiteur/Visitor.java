@@ -40,10 +40,6 @@ public abstract class Visitor<T> {
         function.getBlock().getInstr().accept(this);
         return null;
     };
-    public T visit(InstrAff instrAff) throws Exception {
-        instrAff.getExp().accept(this);
-        return null;
-    };
     public T visit(InstrDecl instrDecl) throws Exception{
         instrDecl.getExp().accept(this);
         instrDecl.getType().accept(this);
@@ -97,11 +93,33 @@ public abstract class Visitor<T> {
         return null;
     };
 
-    public T visit(InstrIncr instrIncr) throws Exception {
+
+
+    public T visit(CalcuAff calcuAff) throws Exception {
+        calcuAff.getExp().accept(this);
         return null;
     }
 
-    public T visit(InstrDecr instrDecr) throws Exception {
+    public T visit(CalcuIncr calcuIncr) throws Exception {
+        return null;
+    }
+
+    public T visit(CalcuDecr calcuDecr) throws Exception {
+        return null;
+    }
+
+    public T visit(InstrCalcu instrCalcu) throws Exception {
+        instrCalcu.getCalcu().accept(this);
+        return null;
+    }
+
+    public T visit(InstrFor instrFor) throws Exception {
+        instrFor.getCalcu().accept(this);
+        for(Exp e:instrFor.getLstExpr()){
+            e.accept(this);
+        }
+        instrFor.getBlock().getInstr().accept(this);
+        instrFor.getType().accept(this);
         return null;
     }
 }
