@@ -41,6 +41,18 @@ public class julBaseListener implements julListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterExpTabValue(julParser.ExpTabValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpTabValue(julParser.ExpTabValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExpBin(julParser.ExpBinContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -209,6 +221,18 @@ public class julBaseListener implements julListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterInstrAffTab(julParser.InstrAffTabContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInstrAffTab(julParser.InstrAffTabContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInstCalcu(julParser.InstCalcuContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -288,6 +312,18 @@ public class julBaseListener implements julListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInstList(julParser.InstListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInstDeclTab(julParser.InstDeclTabContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInstDeclTab(julParser.InstDeclTabContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

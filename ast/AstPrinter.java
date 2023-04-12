@@ -73,7 +73,7 @@ public class AstPrinter extends Visitor<String> {
 
     @Override
     public String visit(InstrDecl instrDecl) throws Exception {
-        return instrDecl.getType().accept(this) + " " +  instrDecl.getID() + instrDecl.getEgal() + instrDecl.getExp().accept(this) + instrDecl.getPv() ;
+        return instrDecl.getType().accept(this) + " " +  instrDecl.getID() + " " + instrDecl.getEgal() + " " + instrDecl.getExp().accept(this) + instrDecl.getPv() ;
     }
 
     @Override
@@ -188,5 +188,21 @@ public class AstPrinter extends Visitor<String> {
         tabActuel--;
         res += Indent() + "}";
         return res;
+    }
+
+    @Override
+    public String visit(ExpTabValue expTabValue) {
+        return expTabValue.getId()+"["+expTabValue.getValue()+"]";
+    }
+
+    @Override
+    public String visit(InstrDeclTab instrDeclTab) {
+        String res = "int[] " + instrDeclTab.getId() + " = " + instrDeclTab.getIntList().toString() + ";";
+        return res;
+    }
+
+    @Override
+    public String visit(InstrAffTab instrAffTab) throws Exception {
+        return instrAffTab.getID() + "[" + instrAffTab.getIntValue() + "]" + instrAffTab.getEgal() + instrAffTab.getExp().accept(this) + ";";
     }
 }

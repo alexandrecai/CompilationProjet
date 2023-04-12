@@ -30,6 +30,18 @@ public interface julListener extends ParseTreeListener {
 	 */
 	void exitExpUn(julParser.ExpUnContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code expTabValue}
+	 * labeled alternative in {@link julParser#exp}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpTabValue(julParser.ExpTabValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code expTabValue}
+	 * labeled alternative in {@link julParser#exp}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpTabValue(julParser.ExpTabValueContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code expBin}
 	 * labeled alternative in {@link julParser#exp}.
 	 * @param ctx the parse tree
@@ -192,6 +204,18 @@ public interface julListener extends ParseTreeListener {
 	 */
 	void exitInstReturn(julParser.InstReturnContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code instrAffTab}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void enterInstrAffTab(julParser.InstrAffTabContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code instrAffTab}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void exitInstrAffTab(julParser.InstrAffTabContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code instCalcu}
 	 * labeled alternative in {@link julParser#inst}.
 	 * @param ctx the parse tree
@@ -275,6 +299,18 @@ public interface julListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInstList(julParser.InstListContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code instDeclTab}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void enterInstDeclTab(julParser.InstDeclTabContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code instDeclTab}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 */
+	void exitInstDeclTab(julParser.InstDeclTabContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link julParser#program}.
 	 * @param ctx the parse tree

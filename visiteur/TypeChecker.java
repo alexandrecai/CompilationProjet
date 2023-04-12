@@ -32,6 +32,8 @@ public class TypeChecker extends Visitor<Type> {
     private final static Type intType = new TypePrim(TypePrim.Prim.INT);//pour les int
     private final static Type boolType = new TypePrim(TypePrim.Prim.BOOL);//pour les bool
 
+	private final static Type tabType = new TypePrim(TypePrim.Prim.TAB);//pour les tab
+
 	public TypeChecker(SymbolTable t){
 		//le TypeChecker dépend de la table des symboles qui a
 		//été créée à l’étape précédente, et est initialisé
@@ -140,7 +142,7 @@ public class TypeChecker extends Visitor<Type> {
 					return expGauche;
 				}
 
-				if(((e.getOp() == Op.EGALEGAL|| e.getOp() == Op.INF) && expGauche.getType().toLowerCase().equals(intType.getType().toLowerCase()) && expDroite.getType().toLowerCase().equals(intType.getType().toLowerCase()))){
+				if(((e.getOp() == Op.EGALEGAL|| e.getOp() == Op.INF || e.getOp() == Op.SUP) && expGauche.getType().toLowerCase().equals(intType.getType().toLowerCase()) && expDroite.getType().toLowerCase().equals(intType.getType().toLowerCase()))){
 					return boolType;
 				}
 				else {

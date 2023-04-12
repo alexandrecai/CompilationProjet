@@ -46,6 +46,7 @@ public class AstBuild extends julBaseVisitor<Node>{
             case "not" -> Op.NEG;
             case "abs" -> Op.VALEURABSOLUE;
             case "<" -> Op.INF;
+            case ">" -> Op.SUP;
             case "&&" -> Op.ET;
             case "||" -> Op.OU;
             case "/" -> Op.DIV;
@@ -76,6 +77,7 @@ public class AstBuild extends julBaseVisitor<Node>{
             case "not" -> Op.NEG;
             case "abs" -> Op.VALEURABSOLUE;
             case "<" -> Op.INF;
+            case ">" -> Op.SUP;
             case "&&" -> Op.ET;
             case "||" -> Op.OU;
             case "/" -> Op.DIV;
@@ -159,6 +161,7 @@ public class AstBuild extends julBaseVisitor<Node>{
         Type t = switch(type) {
             case "bool" -> new Type("bool");
             case "int" -> new Type("int");
+            case "tab" -> new Type("tab");
             default -> throw new IllegalStateException("error");
         };
 
@@ -272,5 +275,36 @@ public class AstBuild extends julBaseVisitor<Node>{
         InstrFor instrFor = new InstrFor(type,id,lstExpre,calcu,block);
         instrFor.setPos(getPos(ctx));
         return instrFor;
+    }
+
+    @Override
+    public Node visitExpTabValue(julParser.ExpTabValueContext ctx) {
+        String id = ctx.ID().getText();
+        int n = Integer.parseInt(ctx.INT().getText());
+        ExpTabValue expTabValue = new ExpTabValue(id,n);
+        expTabValue.setPos(getPos(ctx));
+        return expTabValue;
+    }
+
+    @Override
+    public Node visitInstDeclTab(julParser.InstDeclTabContext ctx) {
+        String id = ctx.ID().getText();
+        List<Integer> listInt = new ArrayList<>();
+        for (int i = 0; i<ctx.INT().size(); i++){
+            listInt.add(Integer.parseInt(ctx.INT().get(i).toString()));
+        }
+        InstrDeclTab instrDeclTab = new InstrDeclTab(id,listInt);
+        instrDeclTab.setPos(getPos(ctx));
+        return instrDeclTab;
+    }
+
+    @Override
+    public Node visitInstrAffTab(julParser.InstrAffTabContext ctx) {
+        Exp n = (Exp) ctx.exp().accept(this);
+        String id = ctx.ID().getText();
+        int indice = Integer.parseInt(ctx.INT().getText());
+        InstrAffTab instrAffTab = new InstrAffTab(id,"=",n,indice);
+        instrAffTab.setPos(getPos(ctx));
+        return instrAffTab;
     }
 }

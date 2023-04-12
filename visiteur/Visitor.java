@@ -122,4 +122,16 @@ public abstract class Visitor<T> {
         instrFor.getType().accept(this);
         return null;
     }
+
+    public T visit(ExpTabValue expTabValue) {
+        return null;
+    }
+
+    public T visit(InstrDeclTab instrDeclTab) {
+        return null;
+    }
+
+    public T visit(InstrAffTab instrAffTab) throws Exception {
+        return null;
+    }
 }

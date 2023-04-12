@@ -16,6 +16,11 @@ public class TypePrim extends Type{
                 return "bool";
             }
         },
+        TAB{
+            public String toString() {
+                return "tab";
+            }
+        },
         STAT{
             public String toString() {
                 return "statement";

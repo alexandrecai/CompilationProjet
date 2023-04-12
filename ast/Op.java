@@ -63,4 +63,10 @@ public enum Op {
             return "==";
         }
     },
+    SUP{
+        @Override
+        public String toString() {
+            return ">";
+        }
+    }
 }

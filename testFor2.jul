@@ -1,0 +1,1 @@
+int function2(int ab){for ( int a = 0; a < 10; a++){int b = 0; b++;while( ab > 0){int ac = 10; ac--;}}int a = 10;a++;}

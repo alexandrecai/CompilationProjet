@@ -24,6 +24,13 @@ public interface julVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpUn(julParser.ExpUnContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code expTabValue}
+	 * labeled alternative in {@link julParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpTabValue(julParser.ExpTabValueContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code expBin}
 	 * labeled alternative in {@link julParser#exp}.
 	 * @param ctx the parse tree
@@ -119,6 +126,13 @@ public interface julVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstReturn(julParser.InstReturnContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code instrAffTab}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInstrAffTab(julParser.InstrAffTabContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code instCalcu}
 	 * labeled alternative in {@link julParser#inst}.
 	 * @param ctx the parse tree
@@ -167,6 +181,13 @@ public interface julVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInstList(julParser.InstListContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code instDeclTab}
+	 * labeled alternative in {@link julParser#inst}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInstDeclTab(julParser.InstDeclTabContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link julParser#program}.
 	 * @param ctx the parse tree
